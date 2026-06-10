@@ -1,43 +1,43 @@
 const projects = [
   {
     title: "Perler Bead Maker",
-    image: "/assets/PerlerCover.png",
+    image: "./assets/PerlerCover.png",
     year: 2026,
     duration: "2 weeks",
     type: "Course work",
     role: "All",
     teamSize: "Solo-Build",
-    link: "../projects/perler-bead.html"
+    link: "projects/perler-bead.html"
   },
    {
     title: "Pandora's Apparitions",
-    image: "/assets/PandoraCover.png",
+    image: "./assets/PandoraCover.png",
     year: 2026,
     duration: "48 hours",
     type: "Game jam",
     role: "Programmer",
     teamSize: "2 people",
-    link: "../projects/pandoras-apparitions.html"
+    link: "projects/pandoras-apparitions.html"
   },
   {
     title: "Limborium",
-    image: "/assets/LimboriumCover.png",
+    image: "./assets/LimboriumCover.png",
     year: 2025,
     duration: "5 months",
     type: "Course work",
     role: "Programmer",
     teamSize: "3 people",
-    link: "../projects/limborium.html"
+    link: "projects/limborium.html"
   },
    {
     title: "Matey",
-    image: "/assets/MateyCover.png",
+    image: "./assets/MateyCover.png",
     year: 2025,
     duration: "4 months",
     type: "Course work",
     role: "Programmer",
     teamSize: "3 people",
-    link: "../projects/matey.html"
+    link: "projects/matey.html"
   }, 
  
 

@@ -12,32 +12,11 @@ function handlePageHashScroll() {
   const hash = window.location.hash;
   if (!hash) return;
 
-  const attemptScroll = () => {
-    const target = document.querySelector(hash);
-    if (!target) return false;
-
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
-
-    return true;
-  };
-
-  if (attemptScroll()) return;
-
-  const observer = new MutationObserver(() => {
-    if (attemptScroll()) {
-      observer.disconnect();
-    }
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      scrollToHash(hash);
+    }, 100);
   });
-
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true,
-  });
-
-  setTimeout(() => observer.disconnect(), 3000);
 }
 
 function initScrollLinks() {
@@ -49,8 +28,9 @@ function initScrollLinks() {
 
       const hash = href.substring(href.indexOf("#"));
 
-      if (window.location.pathname === link.pathname) {
+      if (link.pathname === window.location.pathname) {
         e.preventDefault();
+
         scrollToHash(hash);
         history.pushState(null, "", hash);
       }
