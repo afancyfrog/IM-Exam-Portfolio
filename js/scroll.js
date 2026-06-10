@@ -4,36 +4,51 @@ function scrollToHash(hash) {
 
   target.scrollIntoView({
     behavior: "smooth",
-    block: "center"
+    block: "center",
   });
 }
 
 function handlePageHashScroll() {
-  if (!window.location.hash) return;
-
   const hash = window.location.hash;
+  if (!hash) return;
 
-  const waitForPage = () => {
+  const attemptScroll = () => {
     const target = document.querySelector(hash);
-    if (!target) return;
+    if (!target) return false;
 
-    scrollToHash(hash);
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+
+    return true;
   };
 
-  window.addEventListener("load", () => {
-    setTimeout(waitForPage, 200);
+  if (attemptScroll()) return;
+
+  const observer = new MutationObserver(() => {
+    if (attemptScroll()) {
+      observer.disconnect();
+    }
   });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+
+  setTimeout(() => observer.disconnect(), 3000);
 }
 
 function initScrollLinks() {
-  document.querySelectorAll(".nav-links a").forEach(link => {
+  document.querySelectorAll(".nav-links a").forEach((link) => {
     link.addEventListener("click", (e) => {
       const href = link.getAttribute("href");
 
       if (!href || !href.includes("#")) return;
 
       const hash = href.substring(href.indexOf("#"));
-      
+
       if (window.location.pathname === link.pathname) {
         e.preventDefault();
         scrollToHash(hash);
