@@ -1,4 +1,6 @@
 async function loadNavbar() {
+  const path = document.body.dataset.navPath || ".";
+
   const response = await fetch(`${path}/components/navbar.html`);
   const html = await response.text();
 
@@ -6,10 +8,10 @@ async function loadNavbar() {
 
   highlightCurrentPage();
   setupHamburger();
-
   initScrollLinks();
   handlePageHashScroll();
 }
+
 
 loadNavbar();
 
