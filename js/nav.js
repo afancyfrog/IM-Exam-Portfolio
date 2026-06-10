@@ -6,7 +6,7 @@ async function loadNavbar() {
 
   document.getElementById("navbar").innerHTML = html;
 
-  fixNavbarLinks();
+  normalizeNavbarLinks();
   fixNavbarAssets();
 
   highlightCurrentPage();
@@ -16,12 +16,12 @@ async function loadNavbar() {
 }
 
 loadNavbar();
-
-function fixNavbarLinks() {
+function normalizeNavbarLinks() {
   document.querySelectorAll(".nav-links a").forEach((link) => {
-    const href = link.getAttribute("href");
-
+    let href = link.getAttribute("href");
     if (!href) return;
+
+    if (href.startsWith(BASE)) return;
 
     if (href.startsWith("/")) {
       link.href = BASE + href;
@@ -33,24 +33,17 @@ function fixNavbarAssets() {
   const logo = document.querySelector(".logo img");
   const hamburger = document.querySelector(".hamburger img");
 
-  if (logo) {
-    logo.src = `${BASE}/assets/LowResLogo3.png`;
-  }
-
-  if (hamburger) {
-    hamburger.src = `${BASE}/assets/HamburgerIcon2.png`;
-  }
+  if (logo) logo.src = `${BASE}/assets/LowResLogo3.png`;
+  if (hamburger) hamburger.src = `${BASE}/assets/HamburgerIcon2.png`;
 }
 
 function highlightCurrentPage() {
-  const currentPage = window.location.pathname;
+  const current = window.location.pathname;
 
   document.querySelectorAll(".nav-links a").forEach((link) => {
-    const href = link.getAttribute("href");
+    const linkPath = new URL(link.href, window.location.origin).pathname;
 
-    if (!href || href.includes("#")) return;
-
-    if (link.pathname === currentPage) {
+    if (linkPath === current) {
       link.classList.add("active");
     }
   });
