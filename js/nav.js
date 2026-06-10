@@ -1,5 +1,7 @@
 async function loadNavbar() {
-  const response = await fetch("/components/navbar.html");
+  const path = document.body.dataset.navPath || ".";
+
+  const response = await fetch(`${path}/components/navbar.html`);
   const html = await response.text();
 
   document.getElementById("navbar").innerHTML = html;
@@ -7,7 +9,9 @@ async function loadNavbar() {
   highlightCurrentPage();
   setupHamburger();
 
-  initScrollLinks();
+  if (typeof initScrollLinks === "function") {
+    initScrollLinks();
+  }
 }
 
 loadNavbar();
