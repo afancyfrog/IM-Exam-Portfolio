@@ -9,8 +9,7 @@ const messageFeedback = document.getElementById("message-feedback");
 const form = document.getElementById("contact-form");
 const successMessage = document.getElementById("success-message");
 
-
-// No actual functioniing email system yet.... 
+// No actual functioniing email system yet....
 // this is all just meant to simulate the process
 
 function validateName() {
@@ -68,14 +67,13 @@ function updateSubmitState() {
   submitBtn.disabled = !allValid;
 }
 
-[nameInput, emailInput, messageInput].forEach(input => {
+[nameInput, emailInput, messageInput].forEach((input) => {
   input.addEventListener("input", updateSubmitState);
 });
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // safety check
   const allValid =
     nameInput.classList.contains("valid") &&
     emailInput.classList.contains("valid") &&
@@ -83,36 +81,27 @@ form.addEventListener("submit", (e) => {
 
   if (!allValid) return;
 
-  // loading state
   submitBtn.disabled = true;
   submitBtn.textContent = "Sending...";
 
   setTimeout(() => {
-
-    // show success message
     successMessage.style.display = "block";
 
-    // reset form fields
     form.reset();
 
-    // clear validation classes
-    [nameInput, emailInput, messageInput].forEach(el => {
+    [nameInput, emailInput, messageInput].forEach((el) => {
       el.classList.remove("valid", "invalid");
     });
 
-    // clear feedback text
     nameFeedback.textContent = "";
     emailFeedback.textContent = "";
     messageFeedback.textContent = "";
 
-    // reset button
     submitBtn.disabled = true;
     submitBtn.textContent = "Send Message";
 
-    // hide success after delay
     setTimeout(() => {
       successMessage.style.display = "none";
     }, 3000);
-
   }, 1200);
 });

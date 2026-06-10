@@ -1,133 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perler Bead Maker</title>
     <script src="/js/nav.js" defer></script>
-    <link rel="stylesheet" href="/css/style.css">
-     <link rel="stylesheet" href="/css/mediaqueries.css" />
-</head>
-<body data-nav-path="..">
-     <div class="page-container project-page">
-        <div id="navbar"></div>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/mediaqueries.css" />
+  </head>
+  <body data-nav-path="..">
+    <div class="page-container project-page">
+      <div id="navbar"></div>
 
-        <div class="project-video">
-            
-             <video controls width="600">
-            <source src="/assets/PerlerGameplay.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-            </video>
+      <div class="project-video">
+        <video controls width="600">
+          <source src="/assets/PerlerGameplay.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-             <h1>Perler Bead Maker</h1>
-        </div>
+        <h1>Perler Bead Maker</h1>
+      </div>
 
-        <div class="info-block">
-             
+      <div class="info-block">
         <ul class="info">
-            <li>Team size: 1</li>
-            <li>Art style: pixel</li>
-            <li>Game genre: crafting</li>
-            <li>Game Engine: Unity</li>
-            <li>2D art: Aesprite</li>
-            <li>Year: 2025</li>
-            <li>Purpose: course work</li>
-            <li>Timeline: 3 weeks</li>
-            
+          <li>Team size: 1</li>
+          <li>Art style: pixel</li>
+          <li>Game genre: crafting</li>
+          <li>Game Engine: Unity</li>
+          <li>2D art: Aesprite</li>
+          <li>Year: 2025</li>
+          <li>Purpose: course work</li>
+          <li>Timeline: 3 weeks</li>
         </ul>
+      </div>
 
-        </div>
-        
-        <div class="overview-block">
-            <h2>Overview</h2>
+      <div class="overview-block">
+        <h2>Overview</h2>
+        <p>
+          Many crafting based systems in games are formatted around collecting
+          resources and combining them in UI menus. The goal of this prototype
+          was to emulate a real-world craft and bring it to the game world. This
+          crafting system is still largely UI-driven but aims to encourage
+          creativity, rather than limit it.
+        </p>
+      </div>
+
+      <div class="layout">
+        <h2>Placing Beads</h2>
+        <div class="project-content">
+          <div class="project-image">
+            <img
+              src="../assets/PerlerImage1.png"
+              alt="Screenshot of unity tilemap editor"
+            />
+          </div>
+          <div class="project-text">
             <p>
-                Many crafting based systems in games are formatted around collecting resources and combining them in UI menus.
-                The goal of this prototype was to emulate a real-world craft and bring it to the game world.
-                This crafting system is still largely UI-driven but aims to encourage creativity, rather than limit it.
-                
-
+              The bead placement mechanic was created using unity tilemasp. The
+              tilemap is changed at runtime based on player input. I did it this
+              way as it was a lot more storage-effective than storing hundreds
+              of game objects.
+            </p>
+            <p>
+              This system does come with some drawbacks as the tilemap is very
+              rigid. Objects can not exist between tiles when on the tilemap. To
+              ensure that bead placement felt more responsive I created an
+              object pool that spawns a bead prefab where clicked and plays an
+              animation. All animations in this prototype were created in code
+              using DOTween.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div class="layout"> 
-            <h2>Placing Beads</h2>
-            <div class="project-content">
-                <div class="project-image">
-                     <img src="../assets/Reputation.jpg" alt="Screenshot of unity tilemap editor">
-                </div>
-               <div class="project-text">
-                <p>
-                    The bead placement mechanic was created using unity tilemasp.
-                    The tilemap is changed at runtime based on player input.
-                    I did it this way as it was a lot more storage-effective than storing hundreds of game objects.
-                </p>
-                <p>
-                    This system does come with some drawbacks as the tilemap is very rigid.
-                    Objects can not exist between tiles when on the tilemap.
-                    To ensure that bead placement felt more responsive I created an 
-                    object pool that spawns a bead prefab where clicked and plays an animation.
-                    All animations in this prototype were created in code using DOTween.
-                </p>
-               </div>
-            </div>
+      <div class="layout">
+        <h2>Player Engagement</h2>
+        <div class="project-content">
+          <div class="project-text">
+            <p>
+              This project has recieved a lot of positive feedback. The people
+              who loved this prototype, really loved it and would continue to
+              engage with it days after the playtest. Playtesters made and sent
+              me images of their creations. A benefit of a system like this is
+              that it encourages creativity with a very low barrier to entry.
+              Because the supplies, and space given are so limited it takes off
+              some pressure from the creative process.
+            </p>
+            <p>
+              Of course not everyone loved it. Some playtesters wished the sysem
+              had more challenges or eneimes. This perspective is valid, but not
+              every one feels this way. Popular games today tend to have the
+              same core mechanics and interactions. But this limits the
+              potential systems we can create in the future.
+            </p>
+          </div>
+
+          <div class="project-image">
+            <img
+              src="../assets/Perler2.jpeg"
+              alt="picture showing someone playing the game"
+            />
+          </div>
         </div>
+      </div>
 
-         <div class="layout"> 
-            <h2>Player Engagement</h2>
-            <div class="project-content">
-                
-               <div class="project-text">
-              <p>
-                This project has recieved a lot of positive feedback. The people who loved this prototype, really loved it and would continue to engage with it days after the playtest.
-                Playtesters made and sent me images of their creations. 
-                A benefit of a system like this is that it encourages creativity with a very low barrier to entry.
-                 Because the supplies, and space given are so limited it takes off some pressure from the creative process.
-              </p>
-              <p>Of course not everyone loved it. 
-                Some playtesters wished the sysem had more challenges or eneimes.
-                This perspective is valid, but not every one feels this way. 
-                Popular games today tend to have the same core mechanics and interactions. But this limits the potential systems we can create in the future.
-                
-              </p>
-                </div>
-
-               <div class="project-image">
-                     <img src="../assets/Reputation.jpg" alt="picture showing someone playing the game">
-                </div>
-            </div>
+      <div class="layout">
+        <h2>Pixel Art</h2>
+        <div class="project-content">
+          <div class="project-image">
+            <img
+              src="../assets/Perler3.jpeg"
+              alt="Image of perler bead craft"
+            />
+          </div>
+          <div class="project-text">
+            <p>
+              This project really called for a pixel-art style. I believe that
+              pixel art evokes a feeling of nostalgia because of it's
+              association with retro games. This craft is similarly associated
+              with childhood memories. When Perler Beads are perfectly melted
+              they also form little squares reminiscent of pixel art.
+            </p>
+          </div>
         </div>
-     
-           <div class="layout"> 
-            <h2>Pixel Art</h2>
-            <div class="project-content">
-                <div class="project-image">
-                     <img src="../assets/Reputation.jpg" alt="Image of perler bead craft">
-                </div>
-                <div class="project-text">
-              <p>
-                This project really called for a pixel-art style. 
-                I believe that pixel art evokes a feeling of nostalgia because of it's association with retro games.
-                This craft is similarly associated with childhood memories.
-                When Perler Beads are perfectly melted they also form little squares reminiscent of pixel art.
-              </p>
-             
-                </div>
-               
-            </div>
-        </div>
+      </div>
+    </div>
 
-
-
-
-
-     </div>
-
-   <footer class="site-footer">
+    <footer class="site-footer">
       <div class="footer-content">
         <a href="/contact.html" class="contact-btn"> Contact </a>
 
         <p class="footer-text">Tanya Freese — South Africa — 2026</p>
       </div>
     </footer>
-
-</body>
+  </body>
 </html>

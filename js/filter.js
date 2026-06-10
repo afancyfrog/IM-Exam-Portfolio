@@ -73,7 +73,7 @@ document.querySelectorAll(".dropdown").forEach(dropdown => {
   const labelSpan = btn.querySelector(".dropdown-label");
   const items = dropdown.querySelectorAll(".dropdown-item");
 
-  // Store original label
+  
   dropdown.dataset.defaultLabel = labelSpan.textContent;
 
   btn.addEventListener("click", (e) => {
