@@ -6,11 +6,16 @@ async function loadNavbar() {
 
   document.getElementById("navbar").innerHTML = html;
 
+    document.querySelector(".logo-img").src = `${path}/assets/LowResLogo3.png`;
+    document.querySelector(".hamburger-img").src = `${path}/assets/HamburgerIcon2.png`;
+
   highlightCurrentPage();
   setupHamburger();
   initScrollLinks();
   handlePageHashScroll();
 }
+
+
 
 
 loadNavbar();
