@@ -12,7 +12,7 @@ body {
   font-family: "Doppio One", sans-serif;
 
   /* Background */
-  background-image: url("/assets/GrassBackground.png");
+  background-image: url("../assets/GrassBackground.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

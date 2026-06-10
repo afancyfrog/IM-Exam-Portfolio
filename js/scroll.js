@@ -1,49 +1,44 @@
-function handlePageHashScroll() {
-
-  const hash = window.location.hash;
-
-  if (!hash) return;
-
+function scrollToHash(hash) {
   const target = document.querySelector(hash);
   if (!target) return;
 
-  setTimeout(() => {
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-  }, 100); 
+  target.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  handlePageHashScroll();
-});
+function handlePageHashScroll() {
+  if (!window.location.hash) return;
+
+  const hash = window.location.hash;
+
+  const waitForPage = () => {
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    scrollToHash(hash);
+  };
+
+  window.addEventListener("load", () => {
+    setTimeout(waitForPage, 200);
+  });
+}
 
 function initScrollLinks() {
-
-  document.querySelectorAll('a[href*="#"]').forEach(link => {
-
+  document.querySelectorAll(".nav-links a").forEach(link => {
     link.addEventListener("click", (e) => {
-
       const href = link.getAttribute("href");
 
-      if (!href.includes("#")) return;
+      if (!href || !href.includes("#")) return;
 
       const hash = href.substring(href.indexOf("#"));
-
-      const target = document.querySelector(hash);
-
-      if (!target) return;
-
-      e.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-
-      history.pushState(null, "", hash);
+      
+      if (window.location.pathname === link.pathname) {
+        e.preventDefault();
+        scrollToHash(hash);
+        history.pushState(null, "", hash);
+      }
     });
-
   });
 }
