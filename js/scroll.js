@@ -16,7 +16,6 @@ function initScrollLinks() {
 
       const [page, hash] = href.split("#");
       const currentPage = window.location.pathname.split("/").pop() || "index.html";
-
       const targetPage = page ? page.split("/").pop() : currentPage;
 
       if (currentPage === targetPage) {
@@ -59,7 +58,4 @@ function handlePageHashScroll() {
   setTimeout(() => observer.disconnect(), 3000);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initScrollLinks();
-  handlePageHashScroll();
-});
+document.addEventListener("DOMContentLoaded", handlePageHashScroll);

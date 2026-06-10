@@ -6,6 +6,9 @@ async function loadNavbar() {
 
   highlightCurrentPage();
   setupHamburger();
+
+    initScrollLinks();        
+  handlePageHashScroll();
 }
 
 loadNavbar();
