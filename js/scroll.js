@@ -1,49 +1,40 @@
-function handlePageHashScroll() {
+document.querySelectorAll("a[href*='#']").forEach(link => {
+  link.addEventListener("click", (e) => {
 
-  const hash = window.location.hash;
+    const href = link.getAttribute("href");
+    if (!href.includes("#")) return;
 
-  if (!hash) return;
+    const [page, hash] = href.split("#");
 
-  const target = document.querySelector(hash);
-  if (!target) return;
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const targetPage = page ? page.split("/").pop() : currentPage;
 
-  setTimeout(() => {
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-  }, 100); 
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  handlePageHashScroll();
-});
-
-function initScrollLinks() {
-
-  document.querySelectorAll('a[href*="#"]').forEach(link => {
-
-    link.addEventListener("click", (e) => {
-
-      const href = link.getAttribute("href");
-
-      if (!href.includes("#")) return;
-
-      const hash = href.substring(href.indexOf("#"));
-
-      const target = document.querySelector(hash);
-
-      if (!target) return;
-
+    if (targetPage === currentPage) {
       e.preventDefault();
+
+      const target = document.querySelector("#" + hash);
+      if (!target) return;
 
       target.scrollIntoView({
         behavior: "smooth",
         block: "center"
       });
 
-      history.pushState(null, "", hash);
-    });
+      history.pushState(null, "", "#" + hash);
+    }
 
   });
-}
+});
+
+window.addEventListener("load", () => {
+  const hash = window.location.hash;
+  if (!hash) return;
+
+  const target = document.querySelector(hash);
+  if (target) {
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
+});
